@@ -54,8 +54,8 @@ return "redirect:/path";
 1. return a model attribute or a value that derives from it.
 
 ```   
-    ${object}  
-    ${object.field} 
+    th:object="${object}"  
+    th:object="${object.field}" 
 ```   
 2. execute a condition.
 ```
