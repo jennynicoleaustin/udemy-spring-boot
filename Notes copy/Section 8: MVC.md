@@ -46,6 +46,7 @@ return "redirect:/path";
 }
 ```
 ### Thymeleaf Expressions
+- combines the model with the view 
 - Variable Expression ${...}: executes on a model attribute in some way.
 - Selection Expression *{field}: selects a field from a previously bound object.
 - Link Expression @{/path}: URL endpoint or path to a resource.
