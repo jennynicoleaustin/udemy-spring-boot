@@ -71,10 +71,12 @@ return "redirect:/path";
     th:each= "entry: ${collection}"
 ```
 4. execute utility methods on a model attribute. The utility method returns a value.
+   - '#' indicates the thymeleaf class you want access to.
+   - target = the model attribute 
 ```
     ${#class.method(target, other params)}
 ```
-You can find thymeleaf utility classes here.
+You can find thymeleaf utility classes [here](https://github.com/thymeleaf/thymeleaf/tree/3.1-master/lib/thymeleaf/src/main/java/org/thymeleaf/expression).
 
 ### Thymeleaf Attributes
 `th:text:` displays the result of an expression as simple text.
