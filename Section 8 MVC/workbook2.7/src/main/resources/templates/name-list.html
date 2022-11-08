@@ -6,11 +6,11 @@
 <body>
 <p style="font-weight: bold;">Jenny</p>
 <ul>
-    <li th:text="${name}"></li>
-    <li th:text="${name}"></li>
-    <li th:text="${name}"></li>
-    <li th:text="${name}"></li>
-    <li th:text="${name}"></li>
+    <li th:text="${#strings.substring(name, 0, 1)}"></li>
+    <li th:text="${#strings.substring(name, 1, 2)}"></li>
+    <li th:text="${#strings.substring(name, 2, 3)}"></li>
+    <li th:text="${#strings.substring(name, 3, 4)}"></li>
+    <li th:text="${#strings.substring(name, 4, 5)}"></li>
 </ul>
 </body>
 </html>
