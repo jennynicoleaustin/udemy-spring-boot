@@ -11,30 +11,30 @@
             <th>Episode</th>
             <th>Rating</th>
           </tr>
-            <tr>
-                <th th:text="${first.title}"></th>
-                <th th:text="${first.episode}"></th>
-                <th th:text="${first.rating}"></th>
+            <tr th:object="${first}">
+                <th th:text="*{title}"></th>
+                <th th:text="*{episode}"></th>
+                <th th:text="*{rating}"></th>
             </tr>
-            <tr>
-                <th th:text="${second.title}"></th>
-                <th th:text="${second.episode}"></th>
-                <th th:text="${second.rating}"></th>
+            <tr th:object="${second}">
+                <th th:text="*{title}"></th>
+                <th th:text="*{episode}"></th>
+                <th th:text="*{rating}"></th>
             </tr>
-            <tr>
-                <th th:text="${third.title}"></th>
-                <th th:text="${third.episode}"></th>
-                <th th:text="${third.rating}"></th>
+            <tr th:object="${third}">
+                <th th:text="*{title}"></th>
+                <th th:text="*{episode}"></th>
+                <th th:text="*{rating}"></th>
             </tr>
-            <tr>
-                <th th:text="${fourth.title}"></th>
-                <th th:text="${fourth.episode}"></th>
-                <th th:text="${fourth.rating}"></th>
+            <tr th:object="${fourth}">
+                <th th:text="*{title}"></th>
+                <th th:text="*{episode}"></th>
+                <th th:text="*{rating}"></th>
             </tr>
-            <tr>
-                <th th:text="${fifth.title}"></th>
-                <th th:text="${fifth.episode}"></th>
-                <th th:text="${fifth.rating}"></th>
+            <tr th:object="${fifth}">
+                <th th:text="*{title}"></th>
+                <th th:text="*{episode}"></th>
+                <th th:text="*{rating}"></th>
             </tr>
         </table>        
     </body>
