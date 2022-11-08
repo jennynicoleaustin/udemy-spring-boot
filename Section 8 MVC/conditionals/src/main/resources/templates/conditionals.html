@@ -4,6 +4,16 @@
         <title>Conditionals</title>
     </head>
     <body>
-                
+<!--         <p th:if="${sales > 50}">Sales are good! </p>-->
+<!--         <p th:unless="${sales > 50}">Sales are bad! </p>-->
+<!--above and below does the same thing! -->
+    <p th:text="${sales > 50} ? 'Sales were good' : 'Sales were bad'"></p>
+
+<!--    Thymeleaf switch-->
+    <div th:switch="${product}">
+        <p th:case="'chair'">This is a chair</p>
+        <p th:case="'TV'">This is a TV</p>
+        <p th:case="*"></p>
+        </divth:switch>
     </body>
 </html>
