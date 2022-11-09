@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Sales Records</title>
     </head>
@@ -13,9 +13,9 @@
         </tr>
         <tr th:each="record: ${records}">
             <th th:text="${record.item}"></th>
-            <th th:text="${record.revenue}"></th>
-            <th th:text="${record.cost}"></th>
-            <th th:text="${record.revenue - record.cost}"></th>
+            <th th:text="${#numbers.formatCurrency(record.revenue)}"></th>
+            <th th:text="${#numbers.formatCurrency(record.cost)}"></th>
+            <th th:text="${#numbers.formatCurrency(record.revenue - record.cost)}"></th>
         </tr>
     </table>
     </body>
