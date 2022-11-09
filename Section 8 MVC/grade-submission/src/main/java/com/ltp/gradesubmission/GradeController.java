@@ -3,18 +3,15 @@ package com.ltp.gradesubmission;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class GradeController {
 
-    List<Grade> studentGrades = Arrays.asList(
-            new Grade("Harry", "Potions", "B-"),
-        new Grade("Hermione","Potions","A+"),
-        new Grade("Ron","Potions","c-")
-        );
+    List<Grade> studentGrades = new ArrayList<>();
 
     @GetMapping("/grades")
     public String getGrades(Model model) {
@@ -22,5 +19,15 @@ public class GradeController {
         model.addAttribute("grades", studentGrades);
         return "grades";
 
+    }
+    @GetMapping("/")
+    public String gradeForm (Model model) {
+        model.addAttribute("grade", new Grade());
+        return "form";
+    }
+    @PostMapping("/handleSubmit")
+    public String submitGradeForm(Grade grade) {
+        studentGrades.add(grade);
+        return "redirect:/grades";
     }
 }
