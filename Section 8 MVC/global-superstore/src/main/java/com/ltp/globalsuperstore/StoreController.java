@@ -20,6 +20,7 @@ public class StoreController {
 
     @GetMapping("/inventory")
     public String getInventory(Model model) {
+        model.addAttribute("items", items);
         return "inventory";
     }
 @PostMapping("/submitItem")
