@@ -12,6 +12,12 @@ import java.util.List;
 @Controller
 public class StoreController {
     private List<Item> items = new ArrayList<>();
+
+    @GetMapping("/inventory")
+    public String getInventory(Model model) {
+        model.addAttribute("items", items);
+        return "inventory";
+    }
     @GetMapping("/")
     public String getForm(Model model, @RequestParam(required = false) String id) {
         Item item;
@@ -21,15 +27,15 @@ public class StoreController {
         return "form";
     }
 
-    @GetMapping("/inventory")
-    public String getInventory(Model model) {
-        model.addAttribute("items", items);
-        return "inventory";
-    }
 @PostMapping("/submitItem")
     public String submitOrderForm (Item item) {
+        int index = findItemIndex(item.getId());
+    if (index == Constants.NOT_FOUND) {
         items.add(item);
-        return "redirect:/inventory";
+    } else {
+        items.set(index, item);
+    }
+    return "redirect:/inventory";
     }
     public int findItemIndex (String id) {
         for (int i = 0; i < items.size(); i++)
