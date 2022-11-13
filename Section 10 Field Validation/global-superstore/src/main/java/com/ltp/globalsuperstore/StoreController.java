@@ -28,7 +28,9 @@ public class StoreController {
 
     @PostMapping("/submitItem")
     public String handleSubmit(@Valid Item item, BindingResult result, RedirectAttributes redirectAttributes) {
+        if (item.getDiscount() > item.getPrice()) result.rejectValue("price", "", "Discount cannot be greater than price");
         if (result.hasErrors()) return "form";
+
         int index = getIndexFromId(item.getId());
         String status = Constants.SUCCESS_STATUS;
         if (index == Constants.NOT_FOUND) {
