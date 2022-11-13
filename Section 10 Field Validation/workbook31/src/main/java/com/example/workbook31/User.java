@@ -1,14 +1,29 @@
 package com.example.workbook31;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 public class User {
-
-    @NotBlank
+    @NotBlank(message = "First name cannot be blank")
+    @Size(min = 2, message = "First name must be longer than two characters")
     private String firstName;
+
+    @NotBlank(message = "Last name cannot be blank")
+    @Size(min = 2, message = "Last name must be longer than two characters")
+
     private String lastName;
+    @NotBlank(message = "Username cannot be blank")
+    @Size(message = "Username must be at least 7 characters long")
     private String Username;
+    @Email
     private String Email;
+    @Past
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
     public User(String firstName, String lastName, String username, String email, Date birthDate) {

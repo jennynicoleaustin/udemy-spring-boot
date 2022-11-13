@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <title>Sign-up</title>
     <link rel="stylesheet" th:href="@{/form-stylesheet.css}">
@@ -8,13 +9,21 @@
 <div class="container">
     <h2>Javagram</h2>
     <form th:action="@{/submitItem}" method="post" th:object="${user}">
-    <input type="text" placeholder="First Name" th:text="*{firstName}">
-    <input type="text" placeholder="Last Name" th:text="*{lastName}">
-    <input type="text" placeholder="Username" th:text="*{username}">
-    <input type="text" placeholder="Email" th:text="*{email}">
-    <p style="font-weight: bold">Date of Birth</p>
-    <input type="date" th:text="*{birthDate}"> <br><br>
-    <input type="submit" value="submit">
+        <input type="text" placeholder="First Name" th:field="*{firstName}">
+        <p th:errors="*{firstName}"></p>
+        <input type="text" placeholder="Last Name" th:field="*{lastName}">
+        <p th:errors="*{lastName}"></p>
+        <input type="text" placeholder="Username" th:field="*{username}">
+        <p th:errors="*{username}"></p>
+
+        <input type="text" placeholder="Email" th:field="*{email}">
+        <p th:errors="*{email}"></p>
+
+        <p style="font-weight: bold">Date of Birth</p>
+        <input type="date" th:text="*{birthDate}"> <br><br>
+        <p th:errors="*{birthDate}"></p>
+
+        <input type="submit" value="submit">
     </form>
 </div>
 
