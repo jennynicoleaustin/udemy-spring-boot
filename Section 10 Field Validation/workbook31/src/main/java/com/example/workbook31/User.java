@@ -24,6 +24,7 @@ public class User {
     private String Email;
     @Past
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Age(message = "You must be 18")
     private Date birthDate;
 
     public User(String firstName, String lastName, String username, String email, Date birthDate) {
