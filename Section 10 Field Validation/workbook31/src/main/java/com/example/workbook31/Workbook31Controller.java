@@ -12,7 +12,7 @@ import javax.validation.Valid;
 public class Workbook31Controller {
 
     @GetMapping("/")
-    public String getForm (Model model) {
+    public String getForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
 
@@ -20,13 +20,15 @@ public class Workbook31Controller {
     }
 
     @GetMapping("/result")
-    public String getResult (Model model) {
+    public String getResult(Model model) {
         return "result";
     }
 
     @PostMapping("/submitItem")
-    public String handleSubmit (@Valid User user, BindingResult result) {
-        if (result.hasErrors()) {return "sign-up";}
+    public String handleSubmit(@Valid User user, BindingResult result) {
+        if (user.getLastName().equals(user.getFirstName()))
+            result.rejectValue("lastName", "", "Please enter valid data");
+        if (result.hasErrors()) return "sign-up";
         return "redirect:/result";
     }
 }
