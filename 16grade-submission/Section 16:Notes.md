@@ -42,7 +42,13 @@ public void someUnitTest() {
         verify(mock, times(number of invokations)).method()
     }
 ```
-### Integration Testing
+- *Always make unit tests before integration tests*
+
+## Integration Testing
+
+- maps the request and response lifecycle (the entire app)
+
+
 ```
 @SpringBootTest //starts up application context
 @AutoConfigureMockMvc  // Configures the Mockmvc Bean
