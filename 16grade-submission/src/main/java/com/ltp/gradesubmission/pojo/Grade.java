@@ -1,10 +1,9 @@
 package com.ltp.gradesubmission.pojo;
 
-import java.util.UUID;
+import com.ltp.gradesubmission.validation.Score;
 
 import javax.validation.constraints.NotBlank;
-
-import com.ltp.gradesubmission.validation.Score;
+import java.util.UUID;
 
 public class Grade {
 
@@ -28,6 +27,12 @@ public class Grade {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Grade(String name, String subject, String score) {
+        this.name = name;
+        this.subject = subject;
+        this.score = score;
+        this.id = UUID.randomUUID().toString();    }
 
     public String getSubject() {
         return subject;
