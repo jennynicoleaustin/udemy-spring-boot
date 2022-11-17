@@ -1,10 +1,17 @@
 ## Beans and Dependency Injection
 1. A bean is an object that lives inside the Spring Container.
-2. As your @SpringBootApplication performs a @ComponentScan, a bean is created from classes marked with @Component.
-3. @Controller, @Service and @Repository derive from @Component.
-4. @Configuration: marks a class as a source for bean definitions.
-5. @Bean: method-level annotation for bean definitions.
-6. @Autowired injects the bean where it's needed.
+2. As your `@SpringBootApplication` performs a `@ComponentScan`, a bean is created from classes marked with `@Component`.
+3. `@Controller`, `@Service` and `@Repository` derive from `@Component`.
+4. `@Configuration`: marks a class as a source for bean definitions.
+5. `@Bean`: method-level annotation for bean definitions.
+6. `@Autowired` injects the bean where it's needed.
+
+
+### Dependency Injection 
+- objects should not be created inside a class that depends on them 
+  - creating an object inside a class that is dependent on it is called tight coupling and makes unit testing nearly impossible
+- Inject the object into the class instead
+  - loose coupling
 
 ### Defining Beans (Java)
 ```aidl
