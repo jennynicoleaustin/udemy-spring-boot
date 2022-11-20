@@ -1,11 +1,10 @@
 package com.ltp.contacts.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.ltp.contacts.pojo.Contact;
 import org.springframework.stereotype.Repository;
 
-import com.ltp.contacts.pojo.Contact;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ContactRepository {
