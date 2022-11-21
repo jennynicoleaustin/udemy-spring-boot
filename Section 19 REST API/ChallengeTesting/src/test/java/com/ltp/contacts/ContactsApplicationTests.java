@@ -91,7 +91,7 @@ class ContactsApplicationTests {
         mockMvc.perform(req).andExpect(status().isBadRequest());
     }
 
-}
+
 
     @Test
     public void contactNotFoundTest() throws Exception {
