@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
 @RestController
 @Tag(name = "Contact Controller", description = "add, modify, retrieve contacts")
 public class ContactController {
@@ -27,7 +29,7 @@ public class ContactController {
 
     @Operation(summary = "Retrieves contacts", description = "Provides a list of all contacts in the db")
     @ApiResponse(responseCode = "200", description = "Successful retrieval of contacts", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Contact.class))))
-    @GetMapping(value = "/contact/all")
+    @GetMapping(value = "/contact/all", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Contact>> getContacts() {
         List<Contact> contacts = contactService.getContacts();
         return new ResponseEntity<>(contacts, HttpStatus.OK);
@@ -38,7 +40,7 @@ public class ContactController {
             @ApiResponse(responseCode = "200", description = "Successful retrieval of contact", content = @Content(schema = @Schema(implementation = Contact.class))),
     })
     @Operation(summary = "Get contact by ID", description = "Returns a contact based on an ID ")
-    @GetMapping(value = "/contact/{id}")
+    @GetMapping(value = "/contact/{id}", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> getContact(@PathVariable String id) {
         Contact contact = contactService.getContactById(id);
         return new ResponseEntity<>(contact, HttpStatus.OK);
@@ -49,7 +51,7 @@ public class ContactController {
             @ApiResponse(responseCode = "400", description = "Bad request: unsuccessful submission", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
     })
     @Operation(summary = "Create contact", description = "Creates a contact from the provided payload")
-    @PostMapping(value = "/contact")
+    @PostMapping(value = "/contact", produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<Contact> createContact(@Valid @RequestBody Contact contact) {
         contactService.saveContact(contact);
         return new ResponseEntity<>(contact, HttpStatus.CREATED);
