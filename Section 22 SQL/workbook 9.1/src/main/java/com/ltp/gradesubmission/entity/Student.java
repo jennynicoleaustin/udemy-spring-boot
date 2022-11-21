@@ -1,7 +1,6 @@
 package com.ltp.gradesubmission.entity;
 
 import java.time.LocalDate;
-
 public class Student {
 
     private Long id;
