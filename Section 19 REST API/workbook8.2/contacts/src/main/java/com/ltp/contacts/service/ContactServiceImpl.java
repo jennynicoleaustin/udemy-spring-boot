@@ -1,13 +1,13 @@
 package com.ltp.contacts.service;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
+import com.ltp.contacts.exception.ContactNotFoundException;
+import com.ltp.contacts.pojo.Contact;
+import com.ltp.contacts.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ltp.contacts.pojo.Contact;
-import com.ltp.contacts.repository.ContactRepository;
+import java.util.List;
+import java.util.stream.IntStream;
 
 @Service
 public class ContactServiceImpl implements ContactService {
@@ -41,11 +41,11 @@ public class ContactServiceImpl implements ContactService {
     }
 
 
-    private int findIndexById(String id) {
+    private int findIndexById(String id) throws ContactNotFoundException {
         return IntStream.range(0, contactRepository.getContacts().size())
             .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
             .findFirst()
-            .orElseThrow();
+            .orElseThrow(() -> new ContactNotFoundException(id));
     }
 
 }
