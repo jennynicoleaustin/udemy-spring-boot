@@ -1,23 +1,19 @@
 package com.ltp.gradesubmission.web;
 
-import java.util.List;
-
+import com.ltp.gradesubmission.entity.Grade;
+import com.ltp.gradesubmission.service.GradeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.ltp.gradesubmission.entity.Grade;
+import java.util.List;
 
 @RestController
 @RequestMapping("/grade")
 public class GradeController {
+    @Autowired
+    GradeService gradeService;
     
     @GetMapping("/student/{studentId}/course/{courseId}")
     public ResponseEntity<Grade> getGrade(@PathVariable Long studentId, @PathVariable Long courseId) {
@@ -26,7 +22,7 @@ public class GradeController {
 
     @PostMapping("/student/{studentId}/course/{courseId}")
     public ResponseEntity<Grade> saveGrade(@RequestBody Grade grade, @PathVariable Long studentId, @PathVariable Long courseId) {
-        return new ResponseEntity<>(grade, HttpStatus.CREATED);
+        return new ResponseEntity<>(gradeService.saveGrade(grade, studentId, courseId), HttpStatus.CREATED);
     }
 
     @PutMapping("/student/{studentId}/course/{courseId}")
