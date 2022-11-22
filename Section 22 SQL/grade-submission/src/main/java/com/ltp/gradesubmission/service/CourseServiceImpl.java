@@ -1,9 +1,11 @@
 package com.ltp.gradesubmission.service;
 
+import com.ltp.gradesubmission.entity.Course;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-import com.ltp.gradesubmission.entity.Course;
-
+@Service
 public class CourseServiceImpl implements CourseService {
 
     @Override

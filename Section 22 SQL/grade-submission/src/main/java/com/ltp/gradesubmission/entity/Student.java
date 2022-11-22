@@ -9,8 +9,10 @@ public class Student {
     @GeneratedValue
     @Column(name = "id")
     private Long id;
+
     @Column(name="name", nullable = false)
     private String name;
+
     @Column(name="birth_date", nullable = false)
     private LocalDate birthDate;
 

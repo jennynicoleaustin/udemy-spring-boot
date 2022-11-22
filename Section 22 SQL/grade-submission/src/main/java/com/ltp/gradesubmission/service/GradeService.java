@@ -1,9 +1,11 @@
 package com.ltp.gradesubmission.service;
 
+import com.ltp.gradesubmission.entity.Grade;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-import com.ltp.gradesubmission.entity.Grade;
-
+@Service
 public interface GradeService {
     Grade getGrade(Long studentId, Long courseId);
     Grade saveGrade(Grade grade, Long studentId, Long courseId);
