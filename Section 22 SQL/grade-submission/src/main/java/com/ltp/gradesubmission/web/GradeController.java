@@ -14,7 +14,7 @@ import java.util.List;
 public class GradeController {
     @Autowired
     GradeService gradeService;
-    
+
     @GetMapping("/student/{studentId}/course/{courseId}")
     public ResponseEntity<Grade> getGrade(@PathVariable Long studentId, @PathVariable Long courseId) {
         return new ResponseEntity<>(HttpStatus.OK);
