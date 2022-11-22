@@ -1,6 +1,7 @@
 package com.ltp.gradesubmission.web;
 
 import com.ltp.gradesubmission.entity.Course;
+import com.ltp.gradesubmission.service.CourseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,8 @@ import java.util.List;
 @RequestMapping("/course")
 public class CourseController {
 
+    CourseService courseService;
+
     @GetMapping("/{id}")
     public ResponseEntity<Course> getCourse(@PathVariable Long id) {
         return new ResponseEntity<>(HttpStatus.OK);
@@ -18,7 +21,7 @@ public class CourseController {
 
     @PostMapping
     public ResponseEntity<Course> saveCourse(@RequestBody Course course) {
-        return new ResponseEntity<>(course, HttpStatus.CREATED);
+        return new ResponseEntity<>(courseService.saveCourse(course), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

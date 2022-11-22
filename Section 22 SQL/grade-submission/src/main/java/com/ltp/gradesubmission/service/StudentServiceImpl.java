@@ -2,14 +2,14 @@ package com.ltp.gradesubmission.service;
 
 import com.ltp.gradesubmission.entity.Student;
 import com.ltp.gradesubmission.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@AllArgsConstructor
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired
     StudentRepository studentRepository;
 
     @Override
