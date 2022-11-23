@@ -1,21 +1,24 @@
 package com.ltp.gradesubmission.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-
-import javax.persistence.*;
 import java.util.List;
 
-@Getter // generates all the getters
-@Setter // generates all the setters
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.*;
+
+@Getter
+@Setter
 @RequiredArgsConstructor
-@NoArgsConstructor // creates a constructor with no fields
+@NoArgsConstructor
 @Entity
 @Table(name = "course")
 public class Course {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Long id;
 
     @NonNull

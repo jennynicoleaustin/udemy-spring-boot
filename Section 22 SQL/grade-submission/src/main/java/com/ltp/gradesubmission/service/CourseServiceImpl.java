@@ -1,21 +1,26 @@
 package com.ltp.gradesubmission.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.ltp.gradesubmission.entity.Course;
+import com.ltp.gradesubmission.exception.CourseNotFoundException;
 import com.ltp.gradesubmission.repository.CourseRepository;
+
 import lombok.AllArgsConstructor;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
+@AllArgsConstructor
 @Service
-@AllArgsConstructor // replaces the need for autowired fields as dependency injection.
 public class CourseServiceImpl implements CourseService {
 
     CourseRepository courseRepository;
-
+    
     @Override
     public Course getCourse(Long id) {
-        return courseRepository.findById(id).get();
+        Optional<Course> course = courseRepository.findById(id);
+        return unwrapCourse(course, id);
     }
 
     @Override
@@ -24,13 +29,19 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void deleteCourse(Long id) {
-        courseRepository.deleteById(id);
+    public void deleteCourse(Long id) {  
+        courseRepository.deleteById(id);      
     }
 
     @Override
     public List<Course> getCourses() {
-        return (List<Course>) courseRepository.findAll();
+        return (List<Course>)courseRepository.findAll();
     }
+ 
+    static Course unwrapCourse(Optional<Course> entity, Long id) {
+        if (entity.isPresent()) return entity.get();
+        else throw new CourseNotFoundException(id);
+    }
+
 
 }
