@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/grade")
@@ -16,7 +17,7 @@ public class GradeController {
     GradeService gradeService;
 
     @GetMapping("/student/{studentId}/course/{courseId}")
-    public ResponseEntity<Grade> getGrade(@PathVariable Long studentId, @PathVariable Long courseId) {
+    public ResponseEntity<Optional> getGrade(@PathVariable Long studentId, @PathVariable Long courseId) {
         return new ResponseEntity<>(gradeService.getGrade(studentId, courseId), HttpStatus.OK);
     }
 

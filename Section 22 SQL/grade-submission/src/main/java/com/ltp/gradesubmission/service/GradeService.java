@@ -3,9 +3,10 @@ package com.ltp.gradesubmission.service;
 import com.ltp.gradesubmission.entity.Grade;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface GradeService {
-    Grade getGrade(Long studentId, Long courseId);
+    Optional<Grade> getGrade(Long studentId, Long courseId);
     Grade saveGrade(Grade grade, Long studentId, Long courseId);
     Grade updateGrade(String score, Long studentId, Long courseId);
     void deleteGrade(Long studentId, Long courseId);
