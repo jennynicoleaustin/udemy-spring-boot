@@ -14,3 +14,6 @@
   - Authorization field
 - Body
   - payload we are sending API 
+
+#### Security Config
+- After signing in the httpSecurity automatically creates a session for the user and stores it inside a cookie.
