@@ -1,6 +1,13 @@
 ## Spring Security 
 
-### Basic Security
+
+
+
+
+
+
+
+### Basic Security - Should be avoided. 
 
 #### Authentication 
 - Validates the identity of client 
