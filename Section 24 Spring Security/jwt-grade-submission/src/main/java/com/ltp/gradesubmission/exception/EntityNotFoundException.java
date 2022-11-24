@@ -1,4 +1,5 @@
 package com.ltp.gradesubmission.exception;
+//This class replaces the need for additional exception classes for each entity.
 
 public class EntityNotFoundException extends RuntimeException { 
 
