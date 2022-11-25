@@ -2,6 +2,7 @@ package com.ltp.gradesubmission.security;
 
 
 import com.ltp.gradesubmission.security.filter.AuthenticationFilter;
+import com.ltp.gradesubmission.security.filter.ExceptionHandlerFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -26,6 +27,7 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll() // Allows anyone to make post request on the path sign-up/register
                 .anyRequest().authenticated() // requires that all requests (other than antMatcher specified requests) be authenticated
                 .and()
+                .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
                 .addFilter(authenticationFilter)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         return http.build();
