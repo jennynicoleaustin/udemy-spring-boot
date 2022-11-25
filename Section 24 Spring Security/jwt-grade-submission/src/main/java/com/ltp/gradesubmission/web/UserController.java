@@ -24,6 +24,7 @@ public class UserController {
 
     @PostMapping("/register")
 	public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
+		userService.saveUser(user);
 		return new ResponseEntity<>(HttpStatus.CREATED); // You should avoid sending back even a hashed pw as it leaves the pw vulnerable and there really isn't a need to send that information back
 	}
 
