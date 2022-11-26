@@ -20,7 +20,10 @@
    - Uses the signature to test is signature matches to verify the token is valid
    - Sets the authorization on the security context holder
 
-
+#### Once a user receives the JWT token
+- All requests start off in the exception handling filter 
+  - Authentication method does not get invoked because it already has a token 
+  - From there is will invoke the JWT Authorization class 
 
 ### Basic Security - Should be avoided. 
 
